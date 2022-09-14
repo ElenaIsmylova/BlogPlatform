@@ -1,25 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import { Routes, Route } from 'react-router-dom'
+
+import { HomePage } from './pages/home-page/HomePage'
+import { CreateAccountPage } from './pages/create-account-page/CreateAccountPage'
+import { LoginPage } from './pages/login-page/LoginPage'
+import { EditAccountPage } from './pages/edit-account-page/EditAccountPage'
+import { SingleArticlePage } from './pages/single-article-page/SingleArticlePage'
+import { CreateArticlePage} from './pages/create-article-page/CreateArticlePage'
+import { EditArticlePage} from './pages/edit-article-page/EditArticlePage'
+
+import { Layout } from './components/layout/Layout'
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route index element={<HomePage />}/>
+        <Route path="create-account" element={<CreateAccountPage />}/>
+        <Route path="login" element={<LoginPage />}/>
+        <Route path="edit-account" element={<EditAccountPage />}/>
+        <Route path="/:id" element={<SingleArticlePage />}/>
+        <Route path="create-article" element={<CreateArticlePage />}/>
+        <Route path="edit-article/:id" element={<EditArticlePage />}/>
+      </Route>
+    </Routes>
+  )
 }
 
-export default App;
+export default App
