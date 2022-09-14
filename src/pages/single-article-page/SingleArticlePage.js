@@ -2,6 +2,7 @@ import { useState, useEffect } from "react"
 import { useSelector } from "react-redux"
 import { useParams } from "react-router-dom"
 import { useNavigate, Link } from "react-router-dom"
+import { LinearProgress} from "@mui/material"
 import { putLike, deleteLike } from "../../components/services/likeService"
 
 import './SingleArticlePage.css'
@@ -143,7 +144,7 @@ export const SingleArticlePage = () => {
                         {article.body}
                     </p>
                 </div>
-                : <div>loading...</div>
+                : <LinearProgress />
             }
         </>
     )

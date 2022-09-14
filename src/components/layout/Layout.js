@@ -18,53 +18,52 @@ export const Layout = () => {
     const [userImage, setUserImage] = useState(image)
 
     useEffect(() => {
-        setUserName(name)
-        setUserImage(image)
+			setUserName(name)
+			setUserImage(image)
     }, [name, image])
         
     const onClickLogout = () => {
+			const noneUser = {
+				username: '',
+				email: '',
+				token: '',
+				image: '',
+				isLoaded: false,
+				error: ''
+			}
 
-        const noneUser = {
-            username: '',
-            email: '',
-            token: '',
-            image: '',
-            isLoaded: false,
-            error: ''
-        }
-
-        if (window.confirm('Are you sure you want to log out?')) {
-                window.localStorage.removeItem('token')
-                dispatch(setUserAutorization(noneUser))
-                navigate("/")
-            }
-        }
+			if (window.confirm('Are you sure you want to log out?')) {
+					window.localStorage.removeItem('token')
+					dispatch(setUserAutorization(noneUser))
+					navigate("/")
+				}
+			}
 
     return (
-        <>
-            <header className="header">
-                <Link to="/"><button className="header__title">Realworld Blog</button></Link>
+			<>
+				<header className="header">
+					<Link to="/"><button className="header__title">Realworld Blog</button></Link>
 
-                {isAuth ? (
-                    <div className="user-is-auth">
-                        <Link to="/create-article">
-                            <button className="btn-create-article">Create article</button>
-                        </Link>
-                        <Link to="/edit-account" className="author">
-                            <span className="user-name">{userName}</span>
-                            <img className="user-icon" src={userImage} alt="user"/>
-                        </Link>
-                        <button onClick={onClickLogout} className="btn-log-out">Log Out</button>
-                    </div>
-                ) : (
-                    <div>
-						<Link to="/login"><button className="header__btn header__btn-in">Sign In</button></Link>
-						<Link to="/create-account"><button className="header__btn header__btn-up">Sign Up</button></Link>
-					</div>
-                )}
-            </header>
+					{isAuth ? (
+						<div className="user-is-auth">
+							<Link to="/create-article">
+								<button className="btn-create-article">Create article</button>
+							</Link>
+							<Link to="/edit-account" className="author">
+								<span className="user-name">{userName}</span>
+								<img className="user-icon" src={userImage} alt="user"/>
+							</Link>
+							<button onClick={onClickLogout} className="btn-log-out">Log Out</button>
+						</div>
+					) : (
+						<div>
+							<Link to="/login"><button className="header__btn header__btn-in">Sign In</button></Link>
+							<Link to="/create-account"><button className="header__btn header__btn-up">Sign Up</button></Link>
+						</div>
+					)}
+				</header>
 
-            <Outlet />
-        </>
+				<Outlet />
+			</>
     )
 }
