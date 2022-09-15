@@ -57,6 +57,7 @@ export const EditAccountPage = () => {
                     <input
                         name="password"
                         className="edit-account-input"
+                        // type="password"
                         placeholder="Password"
                         {...register('password', {
                             required: 'Введите новый пароль',

@@ -79,6 +79,7 @@ export const CreateAccountPage = () => {
                     <input
                         name="password"
                         className="register-input"
+                        type="password"
                         placeholder="Password"
                         {...register('password', {
                             required: "Поле обязательно к заполнению!",
@@ -92,6 +93,7 @@ export const CreateAccountPage = () => {
                     <input
                         name="confirmPassword"
                         className="register-input"
+                        type="password"
                         placeholder="Password"
                         {...register('confirmPassword', {
                             required: "Поле обязательно к заполнению!",
